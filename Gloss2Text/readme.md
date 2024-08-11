@@ -10,7 +10,7 @@
     - **모델 예측:** 예측된 글로스를 텍스트로 변환  
 
 ## Model 
-#### [KoBART](Gloss2Text/KoBart)
+#### [KoBART](Gloss2Text/KoBART)
 
 #### [](Gloss2Text/KoBart)
 

@@ -5,7 +5,7 @@
 ## Model 
 #### [KoBART](https://github.com/StoneMaenggu/coda-modeling/tree/main/Gloss2Text/KoBART)
 
-#### [](Gloss2Text/KoBart)
+#### [mBART](Gloss2Text/KoBart)
 
 
 ## Code Structure

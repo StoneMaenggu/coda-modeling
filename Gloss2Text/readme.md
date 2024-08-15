@@ -9,7 +9,7 @@
 ## Model 
 #### [KoBART](https://github.com/StoneMaenggu/coda-modeling/tree/main/Gloss2Text/KoBART)
 
-#### [T5 Text-to-Text Transfer Transformer](Gloss2Text/KoBart)
+#### [KoT5 Text-to-Text Transfer Transformer](Gloss2Text/KoBart)
 
 
 ## Code Structure

@@ -1,9 +1,21 @@
 # Dataset
 
-- NIASL2020
-  - [AIHUB 수어 영상](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=103)
-  - 정답 데이터 존재하지 않음
-- NIASL2021
-  - [AIHUB 재난안전 정보를 위한 수어 영상 데이터 셋](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=636)
-- GKSL
-  - [AIRC-KETI GKSL13k_augmented](https://github.com/AIRC-KETI/GKSL-dataset/tree/main/dataset)
+### NIASL2020
+- [AIHUB 수어 영상](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=103)
+- 정답 데이터 존재하지 않음
+
+### NIASL2021
+- [AIHUB 재난안전 정보를 위한 수어 영상 데이터 셋](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=636)
+
+  |index|situation|gloss|text|
+  |---|---|---|---|
+  |28480|자연재난|바람1\# 눈내리다2\# 밭 시설 밖 하지마 조심1|강풍과 많은 눈이 내리고 있으니 농작물 및 시설물 점검, 외출 자제 바랍니다\.|
+  |106215|자연재난|날짜:0월30일 시:4시50분 비내리다 차오르다 위험 발표 넘치다 조심1|30일 04:50 문경시 홍수경보, 하천범람 등 피해에 주의하세요|
+  |122545|자연재난|오늘 시:6시30분 지역 눈내리다 길 얼음 때 조심1|금일 06:30 현재 우리지역 대설로 인해 도로결빙이 우려되오니, 출근길 안전사고에 주의하여 주시기 바랍니다\.|
+  |172462|자연재난|바람1\# 감염 전기 금지 그래서 지하 자동차2\# 끊다1|현재 강풍으로 인한 정전으로 신천, 세평, 율전, 세류 지하차도 통행이 제한되고 있으니, 우회하여 주시기 바랍니다\.|
+  |177084|사회재난|날짜:01월10일 아침 시:07시33분 광운대 불타다1\# 그치다 완료1|1월 10일 07시33분경 광운대역에서 발생한 열차화재 사고는 현재 진화가 완료 됐음을 알려드립니다\.|
+  |89596|날씨예보|제주 구름 제주 전남 경남 바다 비내리다1|남부지방과 제주도는 흐린 가운데 제주도와 전라남도, 경남남해안에서는 비가 내리겠습니다\.|
+
+
+### GKSL
+- [AIRC-KETI GKSL13k_augmented](https://github.com/AIRC-KETI/GKSL-dataset/tree/main/dataset)

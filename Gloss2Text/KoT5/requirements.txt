@@ -1,0 +1,21 @@
+pandas
+transformers
+datasets
+tokenizers
+redis
+tqdm
+fire
+scikit-learn
+scipy
+# torch==1.12.0
+grpcio
+grpcio-tools
+pytest
+pydantic-argparse
+pydantic
+wandb
+safetensors
+rouge-score
+openpyxl
+aimrocks
+accelerate

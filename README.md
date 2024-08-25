@@ -7,12 +7,52 @@ AI Modeling part
 
 ```
 📦 
+├─ .gitignore
 ├─ Gloss2Text
+│  ├─ Dataset
+│  │  ├─ 0815_PGEN_DAset.ipynb
+│  │  ├─ 0816_PGEN_DAset.ipynb
+│  │  ├─ NIASL2020_LLM.csv
+│  │  └─ readme.md
 │  ├─ KoBART
+│  │  ├─ 0811_KoBART_baseline.ipynb
+│  │  ├─ 0812_KoBART_DAset.ipynb
+│  │  ├─ 0813_KoBART_DAset.ipynb
+│  │  ├─ 0816_KoBART_DAset.ipynb
+│  │  ├─ 0819_KoBART_DAset.ipynb
+│  │  ├─ 0824_KoBART_DAset.ipynb
+│  │  ├─ 0824_KoBART_baseline.ipynb
 │  │  └─ README.md
+│  ├─ KoT5
+│  │  ├─ 0814_KoT5_DAset_psyche.ipynb
+│  │  ├─ 0815_KoT5_DAset.ipynb
+│  │  ├─ 0816_KoT5_DAset.ipynb
+│  │  ├─ 0822_KoT5_DAset.ipynb
+│  │  ├─ 0822_KoT5_small_DAset.ipynb
+│  │  ├─ 0823_KoT5_Base.ipynb
+│  │  ├─ 0824_KoT5_DAset.ipynb
+│  │  ├─ readme.md
+│  │  └─ requirements.txt
 │  └─ readme.md
 ├─ Pose2Gloss
-│  └─ readme.md
+│  ├─ EDA.ipynb
+│  ├─ abc.sh
+│  ├─ create_morpheme_df.py
+│  ├─ create_morpheme_df_JM.py
+│  ├─ download.sh
+│  ├─ download2.sh
+│  ├─ download3.sh
+│  ├─ id2word.json
+│  ├─ p2g_model.py
+│  ├─ readme.md
+│  ├─ savedata_json2npy.py
+│  ├─ savedata_json2npy1.py
+│  ├─ signlang_dataloader.py
+│  ├─ signlang_dataloader_v0.py
+│  ├─ stream.py
+│  ├─ test.py
+│  ├─ trainer.py
+│  └─ word2id.json
 ├─ README.md
 └─ Text2Image
    └─ readme.md

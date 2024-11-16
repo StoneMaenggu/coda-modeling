@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+from torch_geometric.nn import GCNConv
 
 class ContrastiveLoss(nn.Module):
     """
@@ -17,60 +18,61 @@ class ContrastiveLoss(nn.Module):
                                       (label) * torch.pow(torch.clamp(self.margin - euclidean_distance, min=0.0), 2))
         return loss_contrastive
 
-class TimeSeriesCNN(nn.Module):
+class TimeSeriesGCN(nn.Module):
     def __init__(self, input_channels, num_filters, kernel_size, embedding_dim):
-        super(TimeSeriesCNN, self).__init__()
-        # self.emb1 = nn.Linear(input_channels, 512)
-        # self.emb2 = nn.Linear(512, 256)
-        # self.emb3 = nn.Linear(256, 128)
-
-        self.conv1 = nn.Conv1d(input_channels, num_filters,
-                               kernel_size=7,stride=2,padding=3)
-        self.conv2 = nn.Conv1d(num_filters, num_filters * 2,
-                               kernel_size=5,stride=2,padding=2)
-        self.conv3 = nn.Conv1d(num_filters * 2, num_filters * 4,
-                               kernel_size=3,stride=2,padding=1)
-        self.fc1 = nn.Linear(6144, embedding_dim)
+        super(TimeSeriesGCN, self).__init__()
+        
+        # GCN layer
+        self.gcn1 = GCNConv(input_channels, 64)
+        self.gcn2 = GCNConv(64, 32)
+        
+        # CNN layers
+        self.conv1 = nn.Conv1d(32, num_filters, kernel_size=7, stride=2, padding=3)
+        self.conv2 = nn.Conv1d(num_filters, num_filters * 2, kernel_size=5, stride=2, padding=2)
+        self.conv3 = nn.Conv1d(num_filters * 2, num_filters * 4, kernel_size=3, stride=2, padding=1)
+        
+        # Fully connected layer
+        self.fc1 = nn.Linear(3072, embedding_dim)
         self.relu = nn.ReLU()
 
         self.cls1 = nn.Linear(embedding_dim, embedding_dim)
         self.cls2 = nn.Linear(embedding_dim, 210)
-    def forward(self,src):
-        # x = self.emb1(src.permute(0,2,1))
-        # x = self.relu(x)
-        # x = self.emb2(x)
-        # x = self.relu(x)
-        # x = self.emb3(x)
-        # x = self.relu(x)
+    
+    def forward(self, src, edge_index):
+        # GCN embedding
+        x = src.permute(0,2,1)
+        x = self.gcn1(x, edge_index)
+        x = self.relu(x)
+        x = self.gcn2(x, edge_index)
+        x = self.relu(x)
 
-        # x = x.permute(0,2,1)
-
-        x = self.conv1(src)
+        # Convolutional layers
+        x = x.permute(0,2,1)  # Adding the time dimension
+        x = self.conv1(x)
         x = self.relu(x)
         x = self.conv2(x)
         x = self.relu(x)
         x = self.conv3(x)
         x = self.relu(x)
-        x = x.view(x.size(0), -1)
-        x = self.fc1(x)
-        return x
-    def init_weights(self):
-        for m in self.modules():
-            if isinstance(m, nn.Conv1d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
-            elif isinstance(m, nn.Linear):
-                nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
-                nn.init.constant_(m.bias, 0)
 
+        # Flatten and fully connected layers
+        x = x.view(x.size(0), -1)
+        feat = self.fc1(x)
+        x = self.relu(feat)
+        x = self.cls1(x)
+        x = self.relu(x)
+        x = self.cls2(x)
+        
+        return x, feat
+    def init_weights(self):
+        pass
 if __name__ == '__main__':
-    input_channels = 68
+    input_channels = 104
     num_filters = 256
     kernel_size = 3
     embedding_dim = 64
     seq_len = 45
-    model = TimeSeriesCNN(input_channels,
+    model = TimeSeriesGCN(input_channels,
                           num_filters, 
                           kernel_size, 
                           embedding_dim)

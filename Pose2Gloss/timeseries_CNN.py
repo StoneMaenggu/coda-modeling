@@ -20,9 +20,9 @@ class ContrastiveLoss(nn.Module):
 class TimeSeriesCNN(nn.Module):
     def __init__(self, input_channels, num_filters, kernel_size, embedding_dim):
         super(TimeSeriesCNN, self).__init__()
-        # self.emb1 = nn.Linear(input_channels, 512)
-        # self.emb2 = nn.Linear(512, 256)
-        # self.emb3 = nn.Linear(256, 128)
+        # self.emb1 = nn.Linear(input_channels, 256)
+        # self.emb2 = nn.Linear(256, 128)
+        # self.emb3 = nn.Linear(128, 64)
 
         self.conv1 = nn.Conv1d(input_channels, num_filters,
                                kernel_size=7,stride=2,padding=3)
@@ -52,20 +52,25 @@ class TimeSeriesCNN(nn.Module):
         x = self.conv3(x)
         x = self.relu(x)
         x = x.view(x.size(0), -1)
-        x = self.fc1(x)
-        return x
+        feat = self.fc1(x)
+        x = self.relu(feat)
+        x = self.cls1(x)
+        x = self.relu(x)
+        x = self.cls2(x)
+        return x, feat
     def init_weights(self):
-        for m in self.modules():
-            if isinstance(m, nn.Conv1d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
-            elif isinstance(m, nn.Linear):
-                nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
-                nn.init.constant_(m.bias, 0)
+        pass
+        # for m in self.modules():
+        #     if isinstance(m, nn.Conv1d):
+        #         nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
+        #         if m.bias is not None:
+        #             nn.init.constant_(m.bias, 0)
+        #     elif isinstance(m, nn.Linear):
+        #         nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
+        #         nn.init.constant_(m.bias, 0)
 
 if __name__ == '__main__':
-    input_channels = 68
+    input_channels = 104
     num_filters = 256
     kernel_size = 3
     embedding_dim = 64

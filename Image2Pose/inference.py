@@ -9,8 +9,8 @@ class I2P_Module:
         self.mp_hands = mp.solutions.hands
         self.pose = self.mp_pose.Pose(static_image_mode=True, min_detection_confidence=0.5)
         self.hands = self.mp_hands.Hands(static_image_mode=True, max_num_hands=2, min_detection_confidence=0.5)
-        self.use_pose_idx = [11,13,12,14]
-        self.use_hand_idx = [0,2,4,5,6,8,9,10,12,13,14,16,17,18,20]
+        self.use_pose_idx = [12,14,16,11,13,15]
+        self.use_hand_idx = [0,2,3,4,5,6,8,9,10,12,13,14,16,17,18,20]
         # Initialize MediaPipe Drawing
         self.mp_drawing = mp.solutions.drawing_utils
 
@@ -94,6 +94,7 @@ class I2P_Module:
     
 
 if __name__ == '__main__':
+    i2p_module = I2P_Module()
 
     # Example usage
     image_path = '/home/horang1804/Downloads/sample.jpg'  # Replace with your image path
@@ -103,12 +104,4 @@ if __name__ == '__main__':
         print("Error: Could not open or find the image.")
 
 
-
-    # init
-    i2p_module = I2P_Module()
-    
-    # predict
-    pose = i2p_module.predict(image, vis=True)
-
-    # check
-    print(pose.shape)
+    pose = i2p_module.predict(image, vis=False)

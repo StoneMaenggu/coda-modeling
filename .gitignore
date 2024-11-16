@@ -1,3 +1,11 @@
 /Pose2Gloss/__pycache__
-/Pose2Gloss/checkpoint/*
+/Pose2Gloss/checkpoint
 /Pose2Gloss/*.csv
+/Pose2Gloss/wandb
+/Pose2Gloss/samples
+/Pose2Gloss/*.sh
+
+/Inference/dataset
+/Inference/samples
+
+

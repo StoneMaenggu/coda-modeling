@@ -17,7 +17,6 @@ class AIHUB_SIGNLANG_DATASET(Dataset):
                  view_point:list = ['F'], 
                  ):
                 
-                
         self.base_path = base_path
         self.phase = phase
         self.modality = modality

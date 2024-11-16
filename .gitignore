@@ -1,7 +1,12 @@
 /Pose2Gloss/__pycache__
+<<<<<<< HEAD
 /Pose2Gloss/checkpoint/*
 /Pose2Gloss/*.csv
 
+=======
+/Pose2Gloss/checkpoint
+/Pose2Gloss/*.csv
+>>>>>>> inference
 /Pose2Gloss/wandb
 /Pose2Gloss/samples
 /Pose2Gloss/*.sh

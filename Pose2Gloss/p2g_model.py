@@ -100,6 +100,16 @@ class Seq2Seq(nn.Module):
     
     def init_weights(self):
         pass
+        # for name, param in self.named_parameters():
+        #     if 'weight_ih' in name:
+        #         nn.init.xavier_uniform_(param.data)
+        #     elif 'weight_hh' in name:
+        #         nn.init.orthogonal_(param.data)
+        #     elif 'bias' in name:
+        #         nn.init.constant_(param.data, 0)
+        #         if 'bias_hh_l0' in name:
+        #             nn.init.constant_(param.data, 1.0)
+        # print()
 
                     
 if __name__ == '__main__':
